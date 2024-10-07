@@ -63,7 +63,7 @@ require("config/connect.php");
 
 <h1>Add new product form</h1>
 
-<form action="create.php" method="post">
+<form action="vendor/create.php" method="post">
     <p>Title</p>
     <input type="text" name="title">
     <p>Description</p>
