@@ -52,6 +52,7 @@ require("config/connect.php");
             <td><?= $item[3] ?></td>
             <td><?= $item[2] ?></td>
             <td><a href="update.php?id=<?= $item[0] ?>">Update</td>
+            <td><a style = "color: #830303;" href="vendor/delete.php?id=<?= $item[0] ?>">Delete</td>
         </tr>
 
         <?php
