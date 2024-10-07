@@ -51,6 +51,7 @@ require("config/connect.php");
             <td><?= $item[1] ?></td>
             <td><?= $item[3] ?></td>
             <td><?= $item[2] ?></td>
+            <td><a href="update.php?id=<?= $item[0] ?>">Update</td>
         </tr>
 
         <?php
@@ -62,7 +63,7 @@ require("config/connect.php");
 
 <h1>Add new product form</h1>
 
-<form action="vendor/create.php" method="post">
+<form action="create.php" method="post">
     <p>Title</p>
     <input type="text" name="title">
     <p>Description</p>
