@@ -1,8 +1,9 @@
 <?php
 
-require_once ("connect.php");
-/*print_r($connect);*/
-
+require("config/connect.php");
+/**
+ * @var  $connect
+ */
 ?>
 
 <!doctype html>
@@ -14,20 +15,65 @@ require_once ("connect.php");
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Products</title>
 </head>
+
+<style>
+    th, td {
+        padding: 15px;
+        font-size: x-large;
+    }
+
+    th {
+        background: #3b3939;
+        color: white;
+    }
+
+    td {
+        background: #ffd165;
+    }
+</style>
 <body>
-    <table>
+<h1>Table from Database</h1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+    </tr>
+    <?php
+    $products = mysqli_query($connect, "SELECT * FROM `products`");
+    $products = mysqli_fetch_all($products);
+
+    foreach ($products as $item) {
+        ?>
         <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Desription</th>
-            <th>Price</th>
+            <td><?= $item[0] ?></td>
+            <td><?= $item[1] ?></td>
+            <td><?= $item[3] ?></td>
+            <td><?= $item[2] ?></td>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>Product 1</td>
-            <td>Lorem ipsum</td>
-            <td>1000$</td>
-        </tr>
-    </table>
+
+        <?php
+    }
+
+    ?>
+
+</table>
+
+<h1>Add new product form</h1>
+
+<form action="vendor/create.php" method="post">
+    <p>Title</p>
+    <input type="text" name="title">
+    <p>Description</p>
+    <textarea name="description"></textarea>
+    <p>Price</p>
+    <input type="number" name="price"><br>
+    <br>
+    <button type="submit">
+
+        Add new product
+    </button>
+</form>
 </body>
 </html>
